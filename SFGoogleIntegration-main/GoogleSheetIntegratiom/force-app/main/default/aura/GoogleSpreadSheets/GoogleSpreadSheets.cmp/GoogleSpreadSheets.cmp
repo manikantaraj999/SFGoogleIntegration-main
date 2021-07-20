@@ -1,0 +1,10 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:attribute name="selectedSheet" type="String" />
+    
+    <lightning:select aura:id="select-id" label="Select Spreadsheet" name="select" value="{!v.selectedSheet}" class="slds-combobox_container slds-size_medium slds-p-right_large   slds-size_2-of-10" >
+                <option text="-None-"></option>
+                <aura:iteration items="{!v.namedCred}" var="obj">
+                    <option value = "{!obj.DeveloperName}" text="{!obj.MasterLabel}"></option>
+                </aura:iteration>
+            </lightning:select>
+</aura:component>

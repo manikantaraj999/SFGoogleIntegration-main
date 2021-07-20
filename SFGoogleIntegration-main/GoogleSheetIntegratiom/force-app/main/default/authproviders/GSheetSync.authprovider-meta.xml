@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
+    <authorizeUrl>https://accounts.google.com/o/oauth2/auth?access_type=offline&amp;approval_prompt=force</authorizeUrl>
+    <consumerKey>120331307534-b7tcno9mtb8g85us86lldp9v9talqv89.apps.googleusercontent.com</consumerKey>
+    <consumerSecret>AQfzjjXxGjQ4MR97+gtDzvKTL2ITv77tcEEY92ILatc=</consumerSecret>
+    <defaultScopes>https://www.googleapis.com/auth/spreadsheets</defaultScopes>
+    <friendlyName>GSheetSync</friendlyName>
+    <includeOrgIdInIdentifier>false</includeOrgIdInIdentifier>
+    <providerType>Google</providerType>
+    <sendAccessTokenInHeader>false</sendAccessTokenInHeader>
+    <sendClientCredentialsInHeader>false</sendClientCredentialsInHeader>
+    <sendSecretInApis>true</sendSecretInApis>
+    <tokenUrl>https://accounts.google.com/o/oauth2/accessToken</tokenUrl>
+</AuthProvider>

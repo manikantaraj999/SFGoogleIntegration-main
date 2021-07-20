@@ -1,0 +1,39 @@
+<aura:component controller="sampleclass" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    
+    <aura:attribute name="namedCred" type="List"/>
+    <aura:attribute name="selectedName" type="String" />
+    <aura:attribute name="objnames" type="string[]" />
+    <aura:attribute name="selectedValue" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <lightning:card class="slds-p-left_medium slds-p-right_medium slds-theme_shade slds-theme_alert-texture">
+        
+        <div class="slds-align_absolute-center slds-text-title_bold ">                
+            <ui:outputText  value="Update Salesforce Records from GoogleSheet"/>
+        </div>
+        
+        <div class="slds-progress-bar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" role="progressbar">
+            <span class="slds-progress-bar__value slds-progress-bar__value_success" style="width:100%">
+                <span class="slds-assistive-text">Progress: 100%</span>
+            </span>
+        </div>
+        
+        <lightning:select aura:id="select-id" label="Select Google Account" name="select" value="{!v.selectedName}" class="slds-combobox_container slds-size_medium slds-p-right_large  slds-size_2-of-10" onchange="{!c.credName}">
+            <option text="-None-"></option>
+            <aura:iteration items="{!v.namedCred}" var="obj">
+                <option value = "{!obj.DeveloperName}" text="{!obj.MasterLabel}"></option>
+            </aura:iteration>
+        </lightning:select>
+        <lightning:select aura:id="select-id" label="Select SObject" name="select" value="{!v.selectedValue}">
+            <option value="" text="-None"/>
+            <aura:iteration items="{!v.objnames}" var="obj">
+                <option value="{!obj}" text="{!obj}"/>
+            </aura:iteration>
+        </lightning:select>
+        
+        <br/>
+        <div class="slds-align_absolute-center">
+            <lightning:button label="Get Data From Sheet"  variant="brand" onclick="{!c.getsheetdata}"/>
+        </div>
+    </lightning:card>
+</aura:component>

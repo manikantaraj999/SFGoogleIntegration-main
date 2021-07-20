@@ -1,0 +1,10 @@
+<apex:page standardController="Employee__c" renderAs="pdf">
+   									
+        <center style="font-size:25px"><b>{!$User.CompanyName}</b></center><br/>
+        <p>Hi {!Employee__c.Name}</p><br/>
+        <p><b>{!Employee__c.Company_Name__c}</b> offer you full-time employeement in the role of <b>{!Employee__c.Technology__c}</b>,reporing to <b>{!Employee__c.Manager__c}</b>
+         starting on <b>{!Employee__c.Date_Of_Joining__c}</b> at <b>{!Employee__c.Work_Location__c}</b> Location.</p><br/>
+        <h3><b>Summary of Employement Terms</b></h3>
+        <p>1. We will pay you a basic Salary of Rs.{!Employee__c.Salary__c}</p>
+      
+</apex:page>

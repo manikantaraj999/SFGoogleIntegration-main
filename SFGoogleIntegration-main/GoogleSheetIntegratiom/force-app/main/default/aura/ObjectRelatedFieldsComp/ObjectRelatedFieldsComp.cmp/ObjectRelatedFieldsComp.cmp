@@ -1,0 +1,76 @@
+<aura:component controller="fetchPicklistOptsController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    <!--<aura:html tag="style">
+        .slds-button__icon {
+    width: 100px!important;
+    height: 22px!important;
+    fill: currentColor!important;
+}
+    </aura:html>-->
+    <!--<aura:handler event="aura:waiting" action="{!c.showSpinner}"/>
+    <aura:handler event="aura:doneWaiting" action="{!c.hideSpinner}"/>-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <!--<aura:handler name="init" value="{!this}" action="{!c.changeVal}"/>-->
+    <aura:attribute name="objInfo" type="List" />
+    <aura:attribute name="selectedValue" type="String" />
+    <aura:attribute name="option" type="List"/>
+    <aura:attribute name="value" type="List"/>
+    <aura:attribute name="objFields" type="List"/>
+    <aura:attribute name="namedCred" type="List"/>
+    <aura:attribute name="selectedName" type="String" />
+    <aura:attribute name="selectedSheet" type="String" />
+    
+    <!--<div class="exampleHolder">
+        <lightning:spinner aura:id="mySpinner" class="slds-hide"/>
+    </div>-->
+    <lightning:card class=" slds-theme_shade slds-theme_alert-texture">
+        
+        <div class="slds-align_absolute-center slds-text-title_bold ">                
+            <ui:outputText  value="Salesforce to Google Sheet Integration"/>
+        </div>
+        
+        
+        <div class="slds-progress-bar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" role="progressbar">
+            <span class="slds-progress-bar__value slds-progress-bar__value_success" style="width:100%">
+                <span class="slds-assistive-text">Progress: 100%</span>
+            </span>
+        </div>
+        
+        <div class="slds-align_absolute-center ">
+            
+            <lightning:select aura:id="select-id" label="Select Google Account" name="select" value="{!v.selectedName}" class="slds-combobox_container slds-size_medium slds-p-right_large   slds-size_2-of-10" >
+                <option text="-None-"></option>
+                <aura:iteration items="{!v.namedCred}" var="obj">
+                    <option value = "{!obj.DeveloperName}" text="{!obj.MasterLabel}"></option>
+                </aura:iteration>
+            </lightning:select>
+           
+            
+            <div class="slds-combobox_container slds-size_medium slds-p-left_small slds-col slds-size_2-of-10 ">
+                <lightning:select aura:id="select-id" label="Select Object Name Standard/Custom" name="select" value="{!v.selectedValue}" onchange="{!c.objName}"  >
+                    <option text="-None-"></option>
+                    <aura:iteration items="{!v.objInfo}" var="obj">
+                        <option value = "{!obj}" text="{!obj}"></option>
+                    </aura:iteration>
+                </lightning:select>
+                
+            </div>
+        </div>
+        <br/>
+        <lightning:layout verticalAlign="center" class="large">
+            
+            <lightning:dualListbox name="fields"
+                                   label="Select fields"
+                                   sourceLabel="Avaliable Fields"
+                                   selectedLabel="Selected Fields"
+                                   options="{!v.option}"
+                                   value="{!v.value}" class="slds-p-left_medium slds-align_absolute-center  "/>
+            
+        </lightning:layout>
+        
+        <br/>
+        <div class="slds-align_absolute-center">
+            <lightning:button label="Generate Google Sheet" disabled="{!empty(v.value)}" variant="brand" onclick="{!c.getfieldnames}" />
+        </div>
+        
+    </lightning:card>
+</aura:component>
